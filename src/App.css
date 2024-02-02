@@ -21,6 +21,10 @@
   color: black;
 }
 
+.active-link {
+  font-weight: 700;
+}
+
 .app__nav a:hover {
   font-weight: 500;
 }

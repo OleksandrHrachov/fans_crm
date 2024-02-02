@@ -61,7 +61,7 @@ export const LoginPage = () => {
         </label>
 
         <button disabled={!!context?.authenticatedUser} type="submit">
-          Login
+          LOGIN
         </button>
       </form>
 
