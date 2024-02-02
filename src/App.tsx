@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { AuthProvider } from './context/AuthContext';
+import { LoginPage } from './pages/LoginPage';
+import { UserPage } from './pages/UserPage';
 
 function App() {
+  let renderPage;
+
+  switch (window.location.pathname) {
+    case '/login':
+      renderPage = <LoginPage />;
+      break;
+    case '/user':
+      renderPage = <UserPage />;
+      break;
+    default:
+      window.location.pathname = '/login';
+      break;
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <div className="app">
+        <nav className="app__nav">
+          <a href="http://localhost:3000/login">LOGIN</a>
+          <a href="http://localhost:3000/user">PROFILE</a>
+        </nav>
+        <div className="app_page">{renderPage}</div>
+      </div>
+    </AuthProvider>
   );
 }
 
